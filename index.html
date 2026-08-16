@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Class Bell — Course Reminder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">◐</span>
+      <span class="brand-text">Class Bell<span class="brand-sub">SCHEDULE</span></span>
+    </div>
+    <div class="topbar-clock" id="liveClock">--:--</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero: next class -->
+  <section class="hero" id="heroSection">
+    <div class="hero-ring">
+      <div class="bell-icon">🔔</div>
+    </div>
+    <div class="hero-copy">
+      <p class="hero-eyebrow" id="heroEyebrow">Loading schedule…</p>
+      <h1 class="hero-title" id="heroTitle">—</h1>
+      <p class="hero-meta" id="heroMeta">&nbsp;</p>
+    </div>
+    <div class="hero-countdown">
+      <span class="countdown-num" id="countdownNum">00</span>
+      <span class="countdown-unit" id="countdownUnit">minutes</span>
+    </div>
+  </section>
+
+  <div class="layout">
+
+    <!-- Weekly timetable grid -->
+    <section class="panel timetable-panel">
+      <div class="panel-head">
+        <h2>This Week</h2>
+        <span class="panel-note">grey line = current time</span>
+      </div>
+      <div class="timetable-scroll">
+        <div class="timetable-grid" id="timetableGrid">
+          <!-- rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Suggestions + add course -->
+    <aside class="side-col">
+
+      <section class="panel suggestions-panel">
+        <div class="panel-head">
+          <h2>Today's Suggestions</h2>
+        </div>
+        <div class="sticky-stack" id="suggestionStack">
+          <!-- rendered by app.js -->
+        </div>
+      </section>
+
+      <section class="panel add-panel">
+        <div class="panel-head">
+          <h2>Add a Course</h2>
+        </div>
+        <form id="addForm" class="card-form">
+          <label class="field">
+            <span>Course name</span>
+            <input type="text" id="f_name" placeholder="e.g. Data Structures & Algorithms" required />
+          </label>
+          <div class="field-row">
+            <label class="field">
+              <span>Day</span>
+              <select id="f_day">
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+                <option value="7">Sunday</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Start</span>
+              <input type="time" id="f_start" value="09:00" required />
+            </label>
+            <label class="field">
+              <span>End</span>
+              <input type="time" id="f_end" value="10:30" required />
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>Location</span>
+              <input type="text" id="f_location" placeholder="e.g. Engineering Building 401" />
+            </label>
+            <label class="field">
+              <span>Instructor</span>
+              <input type="text" id="f_teacher" placeholder="optional" />
+            </label>
+          </div>
+          <button type="submit" class="btn-primary">＋ Add course</button>
+          <p class="form-msg" id="formMsg"></p>
+        </form>
+      </section>
+
+      <section class="panel list-panel">
+        <div class="panel-head">
+          <h2>All Courses</h2>
+        </div>
+        <ul class="course-list" id="courseList">
+          <!-- rendered by app.js -->
+        </ul>
+      </section>
+
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>Class Bell — a personal course-reminder web app built with plain Java</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
